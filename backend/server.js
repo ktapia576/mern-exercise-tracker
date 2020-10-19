@@ -7,7 +7,7 @@ require('dotenv').config(); // To have enviroment variables in dotenv file
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors()); // Cors Middleware
+app.use(cors()); // Cors Middleware. Added to all paths or globally
 app.use(express.json()); // Allows to parse JSON since server will be sending and receiving JSON
 
 const uri = process.env.ATLAS_URI;
@@ -21,7 +21,7 @@ connection.once('open', () => { // Once connection is set to open. Run the code 
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 
-app.use('/exercises', exercisesRouter);
+app.use('/exercises', exercisesRouter); // Middleware added to specific path
 app.use('/users', usersRouter);
 
 app.listen(port, () => {
