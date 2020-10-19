@@ -14,7 +14,7 @@ const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
 
 const connection = mongoose.connection;
-connection.once('open', () => {
+connection.once('open', () => { // Once connection is set to open. Run the code in function
   console.log("MongoDB database connection established successfully");
 })
 
